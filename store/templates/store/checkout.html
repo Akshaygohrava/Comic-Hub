@@ -1,0 +1,119 @@
+{% extends "store/base.html" %}
+{% block content %}
+
+<style type="text/css">
+  body {
+ 
+    background-color: #00ffff; /* Light blue background for a comic feel */
+    color: #1a1a1a; /* Dark text color */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Comic Sans MS font */
+  }
+
+  .centerdv {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .imgscale {
+    max-width: 64px;
+    max-height: 64px;
+  }
+
+  .container {
+    background-color: #f1e20663; /* White background for container */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  }
+
+  h3 {
+    color: #ff3300; /* Bright orange for headers */
+  }
+
+  .label-success {
+    background-color: #e4e9a4; /* Green for success labels */
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  .well {
+    background-color: #fff; /* White background for well */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f0eea4; /* Light gray for form inputs */
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+  }
+
+  select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+  }
+
+  .btn-success {
+    background-color: #4CAF50; /* Green button color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btn-success:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+</style>
+
+<div class="container centerdv">
+  <h3>Total Price :<br><span class="label label-success">{{ total }}</span></h3>
+  <hr>
+  <div class="well">
+    <form method="post" action="{% url 'completeorder' %}" class="centerdv">
+      {% csrf_token %}
+      <h4>Billing Information</h4>
+      <hr>
+      <b>Name:</b>
+      <input type="text" name="name" class="form-control">
+      <br>
+      <b>Contact No.:</b>
+      <input type="text" name="phone" class="form-control">
+      <br>
+      <b>Address:</b>
+      <input type="text" name="address" class="form-control">
+      <br>
+      <h4>Payment Information</h4>
+      <hr>
+      <b>Payment type:</b>
+      <br>
+      <select name="payment" class="form-control">
+        <option value="Cash On Delivery">Cash on Delivery</option>
+        <option value="Paypal">Paypal</option>
+        <option value="credit card">Credit Card</option>
+      </select>
+      <br>
+      <br>
+      <b>Paypal Email/CC number [if applicable]</b>
+      <br>
+      <input type="text" name="payment_data" class="form-control">
+      <br>
+      <input type="submit" value="Complete Order" class="btn btn-success">
+    </form>
+  </div>
+</div>
+{% endblock %}

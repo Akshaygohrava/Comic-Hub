@@ -1,0 +1,174 @@
+{% block body %}
+
+<style>
+  h2,
+  h3,
+  label {
+    color: rgb(245, 237, 237);
+    font-weight: bold;
+  }
+</style>
+
+<div class="parallax" style='background-image :url("static/images/2.jpg");'>
+
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong>{{message}}
+    <button type="button" class="close rounded" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+
+  <div class="container my-2">
+    <div class="row justify-content-center">
+      <div class="title col-12 col-lg-8">
+        <h1 style="font-weight: bold;" class="mbr-section-title align-center pb-3 mbr-fonts-style display-4">
+          SIGN IN
+        </h1>
+        <h3 style="color: rgb(240, 228, 228);"></h3>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="media-container-column col-lg-8" data-form-type="formoid">
+       
+
+        <form class="mbr-form" action="/login" method="post" data-form-title="Mobirise Form">
+          {% csrf_token %}
+          <div class="row row-sm-offset">
+            <div class="col-md-6 multi-horizontal" data-for="loginusername">
+              <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="loginusername-form1-4">Username</label>
+                <input type="text" class="form-control" name="loginusername" data-form-field="loginusername" required
+                  placeholder="Username" id="loginusername" />
+              </div>
+            </div>
+            <div class="col-md-6 multi-horizontal" data-for="password">
+              <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="password-form1-4">Password</label>
+                <input type="password" class="form-control" name="loginuserpassword" data-form-field="password" required
+                  placeholder="password" id="loginuserpassword" />
+              </div>
+            </div>
+
+
+
+            <span class="input-group-btn"><button type="submit" class="btn btn-form btn-warning display-4 my-3 mx-3">
+                Login
+              </button></span>
+
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+
+<style>
+ /* Background and Text Styles */
+body {
+  background-image: url("static/store/5671166.jpg");
+  background-size: 100%;
+  color: #fff;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+h2,
+h3,
+label {
+  font-weight: bold;
+}
+
+/* Center the form */
+.parallax {
+  background-image: url("static/images/2.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Alert Messages */
+.alert {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Form Styling */
+.mbr-form {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+}
+
+.form-group label {
+  color: #ff9800; /* Update label color to orange */
+  font-weight: bold;
+}
+
+/* Text Box Styles */
+.form-control {
+  width: 100%;
+  padding: 15px;
+  margin: 15px 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.form-control:focus {
+  background-color: rgba(255, 255, 255, 0.2); /* Lighter background on focus */
+}
+
+/* Submit Button */
+.btn-form {
+  background-color: #4caf50; /* Update button color to green */
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 15px 30px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.btn-form:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Forget Password Link */
+.btn-danger {
+  background-color: #e74c3c; /* Update danger button color to red */
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  margin-top: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.btn-danger:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+</style>

@@ -1,0 +1,100 @@
+{% extends 'store/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COMICHUB</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ed003b;
+      /* Dark background color */
+      color: #fff;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    .container {
+    background-color: #9cffe8; /* White background for container */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  }
+
+    .header {
+      background-color: #000000;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 4rem 0;
+    }
+
+    .intro h1 {
+      font-size: 2.5rem;
+      color: #FF9800;
+      /* Orange color for anime theme */
+      text-shadow: 0 0 10px rgba(255, 152, 0, 0.8);
+      /* Glowing shadow effect */
+    }
+
+    .intro p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      /* Glowing shadow effect */
+    }
+
+    .shop-btn {
+      display: inline-block;
+      background-color: #FF9800;
+      /* Orange color for anime theme */
+      color: #fff;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      box-shadow: 0 0 20px rgba(255, 152, 0, 0.4);
+      /* Glowing shadow effect on hover */
+    }
+
+    .shop-btn:hover {
+      background-color: #FFC107;
+      /* Lighter orange color on hover */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <img src="{% static 'store/10.jpg' %}" class="img-fluid" alt="commic Logo" width="100%">
+  </div>
+  <div class="container">
+    <div class="intro">
+      
+      <a href="{% url 'storem' %}" class="shop-btn">Way to COMICHUB</a>
+    </div>
+  </div>
+</body>
+
+</html>
+
+{% endblock %}

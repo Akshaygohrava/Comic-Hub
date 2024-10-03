@@ -1,0 +1,92 @@
+{% extends "store/base.html" %}
+{% block content %}
+
+<style type="text/css">
+  body {
+    background-color: #ff07ff; /* Neutral background color */
+    color: #333; /* Dark text color */
+  }
+
+  .centerdv {
+    width: 70%;
+    margin: 50px auto;
+    text-align: center;
+  }
+
+  .imgscale {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .container {
+    background-color: #f1e20663; /* White background for container */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  }
+
+  .sizef {
+    font-size: 48px; /* Larger font size */
+    color: #501f1f; /* Slightly darker title color */
+  }
+
+  .card {
+    background-color: #d9f008; /* Contrasting card background color */
+    color: #000000; /* White text color on cards */
+    border: none;
+    border-radius: 10px; /* Rounded corners for cards */
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+  }
+
+  /* Hover effect for cards */
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card-title {
+    color: #000000; /* White title color on cards */
+  }
+
+  .card-text {
+    color: #000000; /* Lighter text color on cards */
+  }
+
+  .btn-primary {
+    background-color: #555; /* Darker button color */
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #333; /* Darker color on hover */
+  }
+</style>
+
+<h4 class="font-weight text-center sizef">
+  Explore the Latest Merchandise</h4>
+<hr>
+
+<div class="row">
+  {% for product in store_item %}
+  <div class="col-lg-4 col-md-6">
+    <div class="card">
+      <img class="card-img-top imgscale" src="{{ product.image.url }}" alt="Product image">
+      <div class="card-body">
+        <h4 class="card-title">{{ product.name }}</h4>
+        <hr>
+        <p class="card-text">{{ product.description }}</p>
+        <br>
+        <span class="label label-primary"><b>Price: {{ product.price }}</b></span>
+        <br>
+        <form method="post">
+          {% csrf_token %}
+          <input type="submit" value="Add to Cart" class="btn btn-primary">
+          <input type="hidden" name="obj_id" value={{ product.id }}>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

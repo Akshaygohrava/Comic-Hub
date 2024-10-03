@@ -1,0 +1,56 @@
+{% extends "store/base.html" %}
+{% block content %}
+
+<style type="text/css">
+  body {
+    background-color: #07f7eb;
+    color: #1a1a1a;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+
+  .centerdv {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .receipt {
+    padding: 20px;
+    border: 2px solid #ffcc00;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  h3, h4 {
+    color: #ffcc00;
+  }
+
+  p {
+    color: #1a1a1a;
+  }
+</style>
+
+<div class="container centerdv">
+  <h3>Order Receipt</h3>
+  <hr>
+  <div class="receipt">
+    <h4>Billing Information</h4>
+    <hr>
+    <p><b>Name:</b> {{ request.POST.name }}</p>
+    <p><b>Contact No.:</b> {{ request.POST.phone }}</p>
+    <p><b>Address:</b> {{ request.POST.address }}</p>
+    <h4>Payment Information</h4>
+    <hr>
+    <p><b>Payment type:</b> {{ request.POST.payment }}</p>
+    {% if request.POST.payment == "Paypal" %}
+    <p><b>Paypal Email/CC number:</b> {{ request.POST.payment_data }}</p>
+    {% endif %}
+    <br>
+    <p>
+    <h3>Total Price :<br><span class="label label-success">
+       Rs.{{ total }}</span></h3>
+    </p>
+  </div>
+</div>
+{% endblock %}
